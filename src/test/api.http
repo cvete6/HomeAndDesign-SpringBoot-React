@@ -1,0 +1,143 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8080/architects
+
+###
+
+// architects/{architect_name}
+GET http://localhost:8080/architects/Todorce
+
+###
+
+#search architect by project
+#koi arhitekti rabotat na proektot 1
+#/architects/project/{id_project}
+GET http://localhost:8080/architects/project/3
+
+###
+//KOGA SE DODAVA ARHITECT NE GOO POVRZUVA ID_PROJECT SO SOODVETNIO PROEKT
+//ko ce go dodavam go dodavam bez peokt samo arhitecto
+POST http://localhost:8080/architects
+Content-Type: application/x-www-form-urlencoded
+
+Ime=NEW&lastName=NEWTrajkovski&id_project=3
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("id"), 'Can not find the slotId');
+  client.global.set("newUrl", response.headers.valueOf("Location"));
+  client.global.set("id", response.body["id"]);
+});
+%}
+
+
+###
+//for edit of an architect profile
+//ISTO NE RABOTI SO ID_PROJECT
+PUT http://localhost:8080/architects/edit/14
+Content-Type: application/x-www-form-urlencoded
+
+Name=EDITMartin&lastName=EDITPetreski&id_project=4
+
+###
+
+DELETE http://localhost:8080/architects/2
+
+###
+//PROJECT
+//PROJECT
+
+GET http://localhost:8080/projects
+
+###
+
+GET http://localhost:8080/projects/Proekt1
+
+###
+
+#search architect by project name (string)
+# /projects/{project_name}/architects
+GET http://localhost:8080/projects/Proekt1/architects
+
+###
+
+POST http://localhost:8080/projects
+Content-Type: application/x-www-form-urlencoded
+
+name=SKROSSS&from=12&to=15&description=opiszaProektoNew&id_architect=2&id_architect=14
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("id"), 'Can not find the slotId');
+  client.global.set("newUrl", response.headers.valueOf("Location"));
+  client.global.set("id", response.body["id"]);
+});
+%}
+
+###
+
+PUT http://localhost:8080/projects/edit/5
+Content-Type: application/x-www-form-urlencoded
+
+name=novoImeSkroSSS&from=17&to=17&description=opisza&id_architect=1
+
+###
+
+DELETE http://localhost:8080/projects/5
+
+###
+
+//CATEGORY CATEGORY CATEGORY
+
+GET http://localhost:8080/categories
+
+###
+//categories/{category_id}/projects
+//get all projects by category
+GET http://localhost:8080/categories/2/projects
+
+###
+
+POST http://localhost:8080/categories
+Content-Type: application/x-www-form-urlencoded
+
+description=OpisNaNovioProekt&projectType=Type
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("id"), 'Can not find the slotId');
+  client.global.set("newUrl", response.headers.valueOf("Location"));
+  client.global.set("id", response.body["id"]);
+});
+%}
+
+###
+PUT http://localhost:8080/categories
+Content-Type: application/x-www-form-urlencoded
+
+id_category=4&id_project=2
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.headers.valueOf("Location")!= null, "Invalid Location");
+  client.assert(response.body.hasOwnProperty("id"), 'Can not find the slotId');
+  client.global.set("newUrl", response.headers.valueOf("Location"));
+  client.global.set("id", response.body["id"]);
+});
+%}
+
+###
+
+

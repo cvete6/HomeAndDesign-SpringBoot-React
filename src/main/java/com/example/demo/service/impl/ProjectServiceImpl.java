@@ -1,0 +1,86 @@
+package com.example.demo.service.impl;
+
+import com.example.demo.model.Architect;
+import com.example.demo.model.Project;
+import com.example.demo.repository.jpa.ArchitectJpaRepository;
+import com.example.demo.repository.jpa.ProjectJpaRepository;
+import com.example.demo.service.ProjectService;
+
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class ProjectServiceImpl implements ProjectService {
+
+    private ProjectJpaRepository projectJpaRepository;
+    private ArchitectJpaRepository architectJpaRepository;
+
+    public ProjectServiceImpl(ProjectJpaRepository projectJpaRepository, ArchitectJpaRepository architectJpaRepository) {
+        this.projectJpaRepository = projectJpaRepository;
+        this.architectJpaRepository= architectJpaRepository;
+    }
+
+    @Override
+    public List<Project> getAllProject() {
+        return projectJpaRepository.findAll();
+    }
+
+    @Override
+    public List<Project> getProjectByName(String name) {
+        return projectJpaRepository.getAllProjectByName(name);
+    }
+
+    @Override
+    public List<Architect> getAllArchitectByProjectsName(String name) {
+        return projectJpaRepository.getAllArchitectByProjectsName(name);
+    }
+
+    @Override
+    public Project addNewProject(String name, String from, String to, String description, List<Long> id_architects) {
+        //kako na findByname da predadam eden po eden architect id
+        List<Architect> exist_architects =new ArrayList<>();
+        for (Long id :  id_architects) {
+            if(architectJpaRepository.findById(id).isEmpty()){
+                continue;
+            }else {
+                Architect architect = architectJpaRepository.findByName(id);
+                exist_architects.add(architect);
+            }
+
+        }
+
+        Project project = new Project(name,from,to,description,exist_architects);
+        return projectJpaRepository.save(project);
+    }
+
+    public Project editProject(Long id, String name, String from, String to, String description, List<Long> id_architects) {
+
+        List<Architect> exist_architects =new ArrayList<>();
+        for (Long id_architect :  id_architects) {
+            if(architectJpaRepository.findById(id_architect).isEmpty()){
+                continue;
+            }else {
+                Architect architect = architectJpaRepository.findByName(id_architect);
+                exist_architects.add(architect);
+            }
+
+        }
+        Project oldProject=  projectJpaRepository.findByProjectName(id);
+        oldProject.setName(name);
+        oldProject.setDescription(description);
+        oldProject.setFrom(from);
+        oldProject.setTo(to);
+        oldProject.setArchitects(exist_architects);
+
+        return projectJpaRepository.save(oldProject);
+    }
+
+    public void deleteProject(Long id) {
+        Project project =projectJpaRepository.findByProjectName(id);
+        projectJpaRepository.delete(project);
+    }
+}
