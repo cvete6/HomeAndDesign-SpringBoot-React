@@ -1,13 +1,16 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -26,29 +29,39 @@ public class Project {
     private String name;
 
 
-    @Column(name = "startProject")
-    private String from;
+    @Column(name = "start_project")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate from;
 
-    @Column(name = "endProject")
-    private String to;
+    @Column(name = "end_project")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate to;
 
     private String description;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     private List<Architect> architects;
 
     @JsonIgnore
     @ManyToOne
     private Category category;
 
-    public Project(String name, String from, String to, String description,List<Architect> architects) {
+    public Project(String name, LocalDate from, LocalDate to, String description,List<Architect> architects) {
         this.name=name;
         this.description=description;
         this.architects=architects;
         this.from=from;
         this.to=to;
     }
-    public Project(String name, String from, String to, String description) {
+    public Project(String name, LocalDate from, LocalDate to, String description,List<Architect> architects,Category category) {
+        this.name=name;
+        this.description=description;
+        this.architects=architects;
+        this.from=from;
+        this.to=to;
+        this.category=category;
+    }
+    public Project(String name, LocalDate from, LocalDate to, String description) {
         this.name=name;
         this.description=description;
         this.from=from;
@@ -72,19 +85,19 @@ public class Project {
         this.name = name;
     }
 
-    public String getFrom() {
+    public LocalDate getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(LocalDate from) {
         this.from = from;
     }
 
-    public String getTo() {
+    public LocalDate getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(LocalDate to) {
         this.to = to;
     }
 
@@ -112,4 +125,9 @@ public class Project {
         this.category = category;
     }
 
+    @PreRemove
+    public void preRemove() {
+
+        architects.remove(this);
+    }
 }

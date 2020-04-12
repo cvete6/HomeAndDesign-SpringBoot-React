@@ -18,7 +18,7 @@ public class Architect {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
     private String Name;
@@ -27,7 +27,7 @@ public class Architect {
 
     @JsonIgnore
     @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToMany(mappedBy = "architects")
+    @ManyToMany(mappedBy = "architects",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     private List<Project> projects;
 
     public void setId(Long id) {
@@ -69,4 +69,14 @@ public class Architect {
         this.projects=projects;
     }
 
+    public Architect(String Name, String lastName) {
+        this.Name=Name;
+        this.lastName=lastName;
+    }
+
+    @PreRemove
+    public void preRemove() {
+
+        projects.remove(this);
+    }
 }

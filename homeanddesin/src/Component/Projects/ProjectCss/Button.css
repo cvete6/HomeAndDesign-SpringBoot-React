@@ -1,0 +1,29 @@
+button ,i ,a {
+    background: none !important;
+    border-color: #723b81 !important;
+    color: #723b81 !important;
+    text-align: center;
+    }
+
+button {
+    margin: 0.5% !important;
+}
+
+table{
+    color: #874699 !important;
+    background-color: rgba(240, 225, 255, 0.16) !important;
+    font-weight: 500 !important;
+}
+
+#root{
+    color: #874699 !important;
+}
+
+#width{
+    max-width: 80% !important;
+    margin: auto !important;
+    padding-top: 10% !important;
+
+}
+
+

@@ -1,0 +1,12 @@
+a:hover{
+    transform: translateY(-5px);
+    display:inline-block;
+
+
+}
+a{
+    marging:0 1rem;
+}
+.socialContainer{
+
+}

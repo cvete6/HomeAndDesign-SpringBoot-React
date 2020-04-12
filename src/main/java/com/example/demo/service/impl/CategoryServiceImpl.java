@@ -29,6 +29,12 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category getCategoryById(Long id)
+    {
+        return categoryJpaRepository.findByName(id);
+    }
+
+    @Override
     public List<Project> getAllProjectsByCategory(Long id) {
         return categoryJpaRepository.findAllProjectsByCategory(id);
     }

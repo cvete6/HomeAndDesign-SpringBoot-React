@@ -1,0 +1,14 @@
+.footer {
+    position: fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+#footer{
+    background-color: rgba(203, 157, 193, 0.22);
+    height: 5% !important;
+    justify-content: end!important;
+}

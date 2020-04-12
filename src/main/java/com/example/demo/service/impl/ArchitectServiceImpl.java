@@ -8,7 +8,6 @@ import com.example.demo.service.ArchitectService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArchitectServiceImpl implements ArchitectService {
@@ -31,9 +30,18 @@ public class ArchitectServiceImpl implements ArchitectService {
         return architectJpaRepository.getAllArchitectByName(name);
     }
 
+    public Architect getArchitectById(Long id) {
+        return architectJpaRepository.getArchitectById(id);
+    }
+
     @Override
     public List<Architect> getAllArchitectByProjects(Long id) {
         return architectJpaRepository.getAllArchitectByProjects(id);
+    }
+
+    @Override
+    public List<Project> getAllProjectByArchitectId(Long id) {
+        return projectJpaRepository.getAllProjectByArchitectId(id);
     }
 
 
@@ -42,6 +50,13 @@ public class ArchitectServiceImpl implements ArchitectService {
         List<Project> project = (List<Project>) projectJpaRepository.findByName(id_project);
 
         Architect newArchitect = new Architect(Name, lastName, project);
+        return architectJpaRepository.save(newArchitect);
+    }
+
+    //OVA E ISKORISTENO
+    @Override
+    public Architect addArchitect( String Name, String lastName) {
+        Architect newArchitect = new Architect(Name, lastName);
         return architectJpaRepository.save(newArchitect);
     }
 
@@ -58,13 +73,22 @@ public class ArchitectServiceImpl implements ArchitectService {
         return architectJpaRepository.save(oldArchitect);
     }
 
+    //OVA E ISKORISTENO
+    @Override
+    public Architect editArchitect(Long id, String Name, String lastName) {
+
+        Architect oldArchitect= architectJpaRepository.findByName(id);
+        oldArchitect.setName(Name);
+        oldArchitect.setLastName(lastName);
+
+        return architectJpaRepository.save(oldArchitect);
+    }
+
     @Override
     public Void deleteArchitect(Long id) {
         Architect architect= architectJpaRepository.findByName(id);
         architectJpaRepository.delete(architect);
         return null;
     }
-
-
 
 }

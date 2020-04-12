@@ -1,0 +1,98 @@
+.menu-text{
+    font-size:1.3em;
+    color:#8bd8bd;
+}
+
+.menu-brand{
+    color: #8bd8bd;
+}
+
+.menu-brand:hover{
+    text-decoration: none;
+    color:#028695;
+}
+
+.menu-text-brand{
+    display: inline-block;
+    vertical-align: bottom;
+    padding-bottom: 3%;
+    font-size: 1.6em;
+}
+
+.menu-bg{
+
+    background: rgba(203, 157, 193, 0.22);
+}
+
+.li-menu-padding{
+    padding-left: 15px;
+}
+
+.nav-link:hover{
+    color:#028695;
+    background-color: #0c5460;
+}
+#logo{
+    max-height: 70px;
+}
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+body {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    background-color: #0b2e13;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+#wrapper{
+    background-color: rgba(203, 157, 193, 0.22) !important;
+}
+
+nav{
+    background-color: rgba(249, 221, 241, 0.98);
+
+}
+
+
