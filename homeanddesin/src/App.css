@@ -42,6 +42,7 @@
   height: 100%;
   padding-top: 5px;
   width: max-content !important;
+  display: contents!important;
 }
 #mainheight{
  min-height:  750px;

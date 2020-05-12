@@ -21,6 +21,8 @@ import {AuthProvider} from "./Auth";
 import LogIn from "../src/Authentication/LogIn";
 import Register from "./Authentication/Register/Register";
 import Menu from "./Authentication/Menu/Menu";
+import AboutUs from "./Component/AboutUs/aboutUs";
+
 
 class App extends Component {
     constructor(props) {
@@ -34,28 +36,6 @@ class App extends Component {
 
     componentDidMount() {
         this.loadArchitects();
-/*
-        axios.get('http://localhost:3001/events')
-            .then(response => {
-                console.log(response.data);
-                let appointments = response.data;
-
-                for (let i = 0; i < appointments.length; i++) {
-
-                    appointments[i].start = this.convertDate(appointments[i].start)
-                    appointments[i].end = this.convertDate(appointments[i].end)
-
-                }
-
-                this.setState({
-                    cal_events:appointments
-                })
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-*/
     }
 
     loadArchitects =()=>{
@@ -212,7 +192,7 @@ class App extends Component {
                         <Register/>
                     </Route>
 
-                    <div className="container pt-3" id="main" >
+                    <div className="container pt-3"  id="main" >
                         <Route path={"/architects"}  exact render={()=>
                             <Architects onPageClick={this.loadArchitects} terms={this.state.terms} onDelete={this.deleteArchitect} />}>
                         </Route>
@@ -241,7 +221,9 @@ class App extends Component {
                         <Route path="/projects/calendar">
                             <MyCalendar/>
                         </Route>
-
+                        <Route path={"/aboutUs"} >
+                            <AboutUs/>
+                        </Route>
                         <Redirect to={"/home"}/>
                     </div>
 

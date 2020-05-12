@@ -4,7 +4,6 @@ import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import FooterSocials from '../Footer/FooterSocials/FooterSocials';
 import {Link} from "react-router-dom";
 import './footer.css'
-
 const FooterPage = () => {
     return (
 <div  id="footer">
@@ -24,7 +23,7 @@ const FooterPage = () => {
                         <Link  to={"/projects/calendar"}>Calendar</Link>
                     </li>
                     <li className="list-unstyled">
-                        <Link  to={"/projects"}>About Us</Link>
+                        <Link  to={"/aboutUs"}>About Us</Link>
                     </li>
                 </ul>
             </MDBCol>
