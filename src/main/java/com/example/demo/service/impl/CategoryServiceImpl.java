@@ -40,6 +40,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category getCategoryFromProject(Long id) {
+        return categoryJpaRepository.getCategoryFromProject(id);
+    }
+
+    @Override
     public Category addNewCategory(String description, String projectType) {
         Category newCategory = new Category(description,projectType);
         return categoryJpaRepository.save(newCategory);

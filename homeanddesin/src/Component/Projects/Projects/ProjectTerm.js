@@ -1,15 +1,40 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import '../ProjectCss/Button.css';
+import ProjectsService from "../../../repository/axiosProjectRepository";
 
 class ProjectTerm extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state={
+            items: [],
+
+        }
+    }
+
+    componentDidMount() {
+        this.loadCategory();
+    }
+    loadCategory = () => {
+        ProjectsService.getCategoryFromProject(this.props.projectId).then((response) => {
+
+            this.setState({
+                items: response.data.projectType
+            })
+        }).catch(error => {
+            console.log(error)
+        });
+    }
     render() {
         return (
             <tr  className="align-content-center">
+
                 <td  scope="col" className="text-center">{this.props.term.name}</td>
                 <td  scope="col">{this.props.term.description}</td>
                 <td  scope="col">{this.props.term.from}</td>
                 <td  scope="col">{this.props.term.to}</td>
+                <td  scope="col"> {this.state.items}</td>
                 <td  scope="col"></td>
 
                 <td  scope="col" >

@@ -31,6 +31,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getAllProject() {
+
         return projectJpaRepository.findAll();
     }
 
@@ -92,7 +93,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projectJpaRepository.save(project);
     }
 
-    public Project editProject(Long id, String name, LocalDate from, LocalDate to, String description, List<Long> id_architects) {
+    public Project editProject(Long id, String name, LocalDate from, LocalDate to, String description, List<Long> id_architects,Long id_category) {
 
         List<Architect> exist_architects =new ArrayList<>();
         for (Long id_architect :  id_architects) {
@@ -103,18 +104,23 @@ public class ProjectServiceImpl implements ProjectService {
                 exist_architects.add(architect);
             }
         }
+        Category category=categoryJpaRepository.findByName(id_category);
         Project oldProject=  projectJpaRepository.findByProjectName(id);
         oldProject.setName(name);
         oldProject.setDescription(description);
         oldProject.setFrom(from);
         oldProject.setTo(to);
         oldProject.setArchitects(exist_architects);
+        oldProject.setCategory(category);
 
         return projectJpaRepository.save(oldProject);
     }
-
-    public void deleteProject(Long id) {
+    @Override
+    public Void deleteProject(Long id) {
         Project project =projectJpaRepository.findByProjectName(id);
+
         projectJpaRepository.delete(project);
+        return  null;
     }
+
 }

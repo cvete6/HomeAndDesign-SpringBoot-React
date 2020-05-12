@@ -72,13 +72,6 @@ const ArchitectEdit = (props) => {
                     <div
                         className="offset-sm-1 col-sm-3  text-center">
                         <button
-                            className="btn btn-warning text-upper">
-                            <Link to={"/architects"}>Reset</Link>
-                        </button>
-                    </div>
-                    <div
-                        className="offset-sm-1 col-sm-3  text-center">
-                        <button
                             className="btn btn-danger text-upper">
                             <Link to={"/architects"}>Cencel</Link>
                         </button>

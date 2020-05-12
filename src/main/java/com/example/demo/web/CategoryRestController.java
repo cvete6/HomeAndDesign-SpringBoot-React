@@ -32,6 +32,10 @@ public class CategoryRestController {
 
         return categoryService.getAllProjectsByCategory(category_id);
     }
+    @GetMapping("/project/{project_id}")
+    Category getCategoryFromProject(@PathVariable Long project_id){
+        return categoryService.getCategoryFromProject(project_id);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

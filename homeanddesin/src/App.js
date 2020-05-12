@@ -124,9 +124,6 @@ class App extends Component {
 
 
 
-
-
-
     loadProjects = () => {
         ProjectsService.fetchProjects().then((response) => {
             //console.log(response)
@@ -158,7 +155,7 @@ class App extends Component {
         });
     }
 
-    updateProject = ((editedTerm) => {//dobivam cel Project id ime prezime
+     updateProject = ((editedTerm) => {//dobivam cel Project id ime prezime
         console.log(editedTerm);
 
         ProjectsService.updateProjectTerm(editedTerm).then((response) => {
@@ -215,7 +212,7 @@ class App extends Component {
                         <Register/>
                     </Route>
 
-                    <div className="container" id="main" >
+                    <div className="container pt-3" id="main" >
                         <Route path={"/architects"}  exact render={()=>
                             <Architects onPageClick={this.loadArchitects} terms={this.state.terms} onDelete={this.deleteArchitect} />}>
                         </Route>

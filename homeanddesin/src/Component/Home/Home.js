@@ -18,13 +18,13 @@ const Home = () => {
                             <img
                                 className="d-block w-100"
                                 src="image4.png"
-                                alt="First slide"
+                                alt="Be faithful to your own taste because nothing you really like is ever out of style"
                             />
                             <MDBMask overlay="black-light" />
                         </MDBView>
                         <MDBCarouselCaption>
-                            <h3 className="h3-responsive">Light mask</h3>
-                            <p>First text</p>
+                            <h3 className="h3-responsive">"Be faithful to your own taste, <br/>because nothing you really like is ever out of style"</h3>
+
                         </MDBCarouselCaption>
                     </MDBCarouselItem>
                     <MDBCarouselItem itemId="2">
@@ -32,13 +32,13 @@ const Home = () => {
                             <img
                                 className="d-block w-100"
                                 src="image2.jpg"
-                                alt="Second slide"
+                                alt="Be faithful to your own taste because nothing you really like is ever out of style"
                             />
                             <MDBMask overlay="black-strong" />
                         </MDBView>
                         <MDBCarouselCaption>
-                            <h3 className="h3-responsive">Strong mask</h3>
-                            <p>Second text</p>
+                            <h3 className="h3-responsive">"Be faithful to your own taste,<br/> because nothing you really like is ever out of style"</h3>
+
                         </MDBCarouselCaption>
                     </MDBCarouselItem>
                     <MDBCarouselItem itemId="3">
@@ -46,13 +46,13 @@ const Home = () => {
                             <img
                                 className="d-block w-100"
                                 src="image1.jpg"
-                                alt="Third slide"
+                                alt="Be faithful to your own taste because nothing you really like is ever out of style"
                             />
                             <MDBMask overlay="black-slight" />
                         </MDBView>
                         <MDBCarouselCaption>
-                            <h3 className="h3-responsive">Slight Mast</h3>
-                            <p>Third text</p>
+                            <h3 className="h3-responsive">"Be faithful to your own taste, <br/>because nothing you really like is ever out of style"</h3>
+
                         </MDBCarouselCaption>
                     </MDBCarouselItem>
                 </MDBCarouselInner>

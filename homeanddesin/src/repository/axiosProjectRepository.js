@@ -12,6 +12,9 @@ const ProjectsService = {
     getAllProjectByProjectId: (id)=> {
         return axios.get(`/projects/id_project/${id}`)
     },
+    getCategoryFromProject: (id)=> {
+        return axios.get(`/categories/project/${id}`)
+    },
 
     getProjectById: (id)=>{
         return axios.get(`/projects/id/${id}`)
@@ -36,10 +39,8 @@ const ProjectsService = {
         console.log(id);
         console.log(data);
         const formParams = qs.stringify(data);
-            return axios.patch(`/projects/edit/${id}`,formParams,{
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            }
+            return axios.put(`/projects/edit/${id}`,formParams,{
+
         });
     },
 

@@ -77,12 +77,15 @@ public class ProjectRestController {
     @PutMapping("/edit/{id}")
     public Project editProject(@PathVariable Long id,
                                @RequestParam("name") String name,
-                               @RequestParam("from") LocalDate from,
-                               @RequestParam("to" )LocalDate to,
+                               @RequestParam("from")  String f,
+                               @RequestParam("to" )   String t,
                                @RequestParam("description") String description,
-                               @RequestParam("id_architect") List<Long> id_architects){
+                               @RequestParam("id_architect") List<Long> id_architects,
+                               @RequestParam("id_category") Long id_category){
 
-        return projectService.editProject(id,name,from,to,description,id_architects);
+        LocalDate from = LocalDate.parse(f);
+        LocalDate to =LocalDate.parse(t);
+        return projectService.editProject(id,name,from,to,description,id_architects,id_category);
     }
 
     @DeleteMapping("/{id}")

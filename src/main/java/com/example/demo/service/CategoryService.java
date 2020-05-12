@@ -13,6 +13,8 @@ public interface CategoryService {
 
     List<Project> getAllProjectsByCategory(Long id);
 
+    Category getCategoryFromProject(Long id);
+
     Category addNewCategory(String description, String projectType);
 
     Project addCategoryToProject(Long id_category, List<Long> id_project);

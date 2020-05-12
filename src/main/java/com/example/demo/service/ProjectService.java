@@ -20,8 +20,8 @@ public interface ProjectService {
 
     List<Object> getAllProjectEvents() ;
 
-    Project editProject(Long id, String name, LocalDate from, LocalDate to, String description, List<Long> id_architects);
+    Project editProject(Long id, String name, LocalDate from, LocalDate to, String description, List<Long> id_architects,Long id_category);
 
-    void deleteProject(Long id);
+    Void deleteProject(Long id);
 
     }

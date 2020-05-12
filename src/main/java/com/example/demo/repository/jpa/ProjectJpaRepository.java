@@ -34,6 +34,7 @@ public interface ProjectJpaRepository extends JpaRepository<Project,Long> {
     List<Project> getAllProjectByArchitectId(@Param("id") Long id);
 
 
-    @Query("select p.name, p.from, p.to from Project p  ")
+    @Query("select p.id, p.name, p.from, p.to from Project p  ")
     List<Object> findAllEvents();
+
 }

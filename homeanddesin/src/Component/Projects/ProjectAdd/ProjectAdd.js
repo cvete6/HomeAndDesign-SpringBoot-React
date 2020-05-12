@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Link, Redirect,useHistory} from 'react-router-dom';
 import axios from "../../../custom-axios/axios";
+import {messaging} from "firebase";
 
 const ProjectAdd = (props) => {
     let valid=false;
@@ -45,7 +46,7 @@ const ProjectAdd = (props) => {
     category.map((c,index) =>{
         fieldsArrayCategory.push(
             <div key={index} className="pr-4">
-                <label htmlFor="id" className="col-sm-4 offset-sm-1 text-left  " >{c.projectType} </label>
+                <label htmlFor="id" className="col-sm-2 offset-sm-1 text-left  " >{c.projectType} </label>
                 <div >
                     <input type="radio" name={1}  value={c.id} className="form-control" id="id"  onChange={handleOptionChangeCategory}/>
                 </div>
@@ -56,7 +57,7 @@ const ProjectAdd = (props) => {
     architect.map((a,index) =>{
         fieldsArrayArchitects.push(
             <div key={index} className="pr-4">
-                <label htmlFor="id" className="col-sm-4 offset-sm-1 text-left  " >{a.name} </label>
+                <label htmlFor="id" className="col-sm-2 offset-sm-1 text-left  " >{a.name} </label>
                 <div >
                     <input type="radio" name={a.id}  value={a.id} className="form-control" id="id"  onChange={handleOptionChangeArchitect}/>
                 </div>
@@ -84,6 +85,8 @@ const ProjectAdd = (props) => {
 
         if(newTerm.description === "" || newTerm.name ==="" || newTerm.id_category === ""){
             valid=false;
+            alert("fill in all the fields!!!");
+
             return valid;
         }
         else {
@@ -92,9 +95,6 @@ const ProjectAdd = (props) => {
             //funkcijata ja prativ kako property
             history.push("/projects")
         }
-
-
-
     }
 
 
@@ -103,40 +103,46 @@ const ProjectAdd = (props) => {
             <form className=" mt-5" onSubmit={onFormSubmit}>
                 <h4 className="text-upper text-left">Add Project: </h4>
                 <div className="form-group row">
-                    <label htmlFor="name" className="col-sm-4 offset-sm-1 text-left " >Project name</label>
+                    <label htmlFor="name" className="col-sm-4 offset-sm-1 text-left font-weight-bold " >Project name</label>
                     <div className="col-sm-6">
                         <input type="text" name={"name"}  className="form-control" id="name" placeholder="Project name" maxLength="50"/>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="description" className="col-sm-4 offset-sm-1 text-left " >Description: </label>
+                    <label htmlFor="description" className="col-sm-4 offset-sm-1 text-left font-weight-bold " >Description: </label>
                     <div className="col-sm-6">
                         <input type="text" name={"description"}  className="form-control" id="description" placeholder="description" maxLength="50"/>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="from" className="col-sm-4 offset-sm-1 text-left" >Start project: </label>
+                    <label htmlFor="from" className="col-sm-4 offset-sm-1 text-left font-weight-bold" >Start project: </label>
                     <div className="col-sm-6">
                         <input type="date" pattern={"YYYY-MM-dd"} name={"from"} className="form-control" id="from" placeholder="start project" maxLength="50"/>
                     </div>
                 </div>
 
                 <div className="form-group row">
-                    <label htmlFor="to" className="col-sm-4 offset-sm-1 text-left " >End project: </label>
+                    <label htmlFor="to" className="col-sm-4 offset-sm-1 text-left font-weight-bold " >End project: </label>
                     <div className="col-sm-6">
                         <input type="date" pattern={"YYYY-MM-dd"} name={"to"}  className="form-control" id="architect" placeholder="end project" maxLength="50"/>
                     </div>
                 </div>
 
                 <div className="form-group row">
+                    <label htmlFor="to" className="col-sm-4 offset-sm-1 text-left font-weight-bold " >Choice category of project: </label>
+                </div>
+                <div className=" row pl-xl-5">
                     {fieldsArrayCategory}
                 </div>
-                <div className="form-group row">
+
+                <div className=" row">
+                    <label htmlFor="to" className="col-sm-4 offset-sm-1 text-left font-weight-bold" >Choice architect who work on project: </label>
+                </div>
+                <div className=" row pl-xl-5 ml-5">
                     {fieldsArrayArchitects}
                 </div>
 
-
-                <div className="form-group row">
+                <div className="form-group row pt-xl-5">
                     <div
                         className="offset-sm-1 col-sm-3  text-center">
                         <button type="submit"className="btn btn-primary text-upper" disabled={valid}>

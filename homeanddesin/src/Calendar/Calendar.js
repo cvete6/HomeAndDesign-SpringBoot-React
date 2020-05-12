@@ -65,7 +65,7 @@ class MyCalendar extends Component {
 
     loadProjects = () => {
         ProjectsService.fetchProjectsEvents().then((response) => {
-            //console.log(response)
+            console.log(response)
             this.setState({
                 nastan: response.data,
             })
@@ -77,7 +77,7 @@ class MyCalendar extends Component {
     }
 
 Nastani (){
-        return    this.state.nastan.map((i, index) => {
+        return this.state.nastan.map((i, index) => {
 
         const {title, end, start} = i;
             console.log(i);
@@ -87,8 +87,8 @@ Nastani (){
         let Title = i[0]
         return {
             title: Title,
-            start: startTime,
-            end: endTime,
+            start: endTime,
+            end: startTime,
             extendedProps: {...i}
         };
     })
@@ -97,10 +97,10 @@ Nastani (){
 
     render() {
         return (
-            <div className="container-sm mt-5 pt-xl-5 w-75">
+            <div className="container-sm mt-5 pt-xl-5 pb-xl-5 w-75">
                 <FullCalendar
-                    defaultView="dayGridMonth" plugins={[dayGridPlugin]}
-                    events={this.Nastani() }
+                    defaultView="dayGridMonth" plugins={[dayGridPlugin ]}
+                    events={this.Nastani()}
                 />
 
             </div>

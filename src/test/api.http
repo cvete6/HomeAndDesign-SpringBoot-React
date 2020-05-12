@@ -36,7 +36,7 @@ GET http://localhost:8080/architects/project/2
 POST http://localhost:8080/architects
 Content-Type: application/x-www-form-urlencoded
 
-Ime=novoIme&lastName=NEWpREZIME
+name=novoIme&lastName=NEWpREZIME
 
 > {%
 client.test("Request executed successfully", function() {
@@ -59,7 +59,7 @@ name=nEWiME&lastName=nOVOpREZIME
 
 ###
 
-DELETE http://localhost:8080/architects/1
+DELETE http://localhost:8080/architects/36
 
 ###
 //PROJECT
@@ -85,7 +85,7 @@ GET http://localhost:8080/projects/Proekt1/architects
 POST http://localhost:8080/projects
 Content-Type: application/x-www-form-urlencoded
 
-name=DateProekt&from=2020-04-01&to=2020-04-12&description=opiszaProektoNew&id_architect=1&id_category=1
+name=DateProekt&from=2020-04-01&to=2020-04-12&description=opiszaProektoNew&id_architect=28&id_category=1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -99,14 +99,14 @@ client.test("Request executed successfully", function() {
 
 ###
 
-PUT http://localhost:8080/projects/edit/2
+PUT http://localhost:8080/projects/edit/54
 Content-Type: application/x-www-form-urlencoded
 
-name=novoImeSkroSSS&from=17&to=17&description=opisza&id_architect=3
+name=novoImeSkroSSS&from=2020-04-01&to=2020-04-12&description=opisza&id_architect=41&id_category=1
 
 ###
 
-DELETE http://localhost:8080/projects/23
+DELETE http://localhost:8080/projects/51
 
 ###
 
@@ -118,6 +118,10 @@ GET http://localhost:8080/categories
 //categories/{category_id}/projects
 //get all projects by category
 GET http://localhost:8080/categories/2/projects
+
+###
+//ategories/project/{project_id}
+GET http://localhost:8080/categories/project/1
 
 ###
 

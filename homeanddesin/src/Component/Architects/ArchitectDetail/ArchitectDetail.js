@@ -4,6 +4,7 @@ import axios from '../../../custom-axios/axios';
 import ArchitectsService from "../../../repository/axiosArchitectRepository";
 import '../ArchitectCss/Button.css'
 import ArchitectRow from "./ArchitectRow";
+import ProjectsService from "../../../repository/axiosProjectRepository";
 
 const ArchitectDetail = (props)=> {
     //detali za arhitekto koe mu e imeto i na koi proekti raboti
@@ -28,13 +29,14 @@ const ArchitectDetail = (props)=> {
     },[]);
 
 
+
     let projectsView = projects.map(project => <ArchitectRow project={project}/>);
 
     if(projectsView.length === 0){
         projectsView=<span>none</span>
     }
     return (
-        <div >
+        <div className="container-sm justify-content-center">
             <h4 className="text-upper text-left col-12">    </h4>
 
             <div className="row container-sm">

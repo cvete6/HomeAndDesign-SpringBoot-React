@@ -40,6 +40,8 @@
 }
 #main{
   height: 100%;
+  padding-top: 5px;
+  width: max-content !important;
 }
 #mainheight{
  min-height:  750px;

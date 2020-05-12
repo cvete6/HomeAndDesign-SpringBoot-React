@@ -49,7 +49,7 @@ class Projects extends Component {
                             </div>
                             <div className="col-6 text-right">
                                 <button className="btn btn-outline-secondary">
-                                    <Link className="nav-link" to={"/projects/new"}>Add new architect</Link>
+                                    <Link className="nav-link" to={"/projects/new"}>Add new project</Link>
                                 </button>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ class Projects extends Component {
                     </div>
                     <div className="col-12 text-right">
                         <button className="btn btn-outline-secondary">
-                            <Link className="nav-link" to={"/projects/new"}>Add new architect</Link>
+                            <Link className="nav-link" to={"/projects/new"}>Add new project</Link>
                         </button>
                     </div>
                 </div>

@@ -1,20 +1,15 @@
 package com.example.demo.model;
 
+import com.example.demo.repository.jpa.ArchitectJpaRepository;
+import com.example.demo.repository.jpa.CategoryJpaRepository;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor
@@ -40,7 +35,7 @@ public class Project {
     private String description;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    private List<Architect> architects;
+    private Set<Architect> architects;
 
     @JsonIgnore
     @ManyToOne
@@ -49,14 +44,20 @@ public class Project {
     public Project(String name, LocalDate from, LocalDate to, String description,List<Architect> architects) {
         this.name=name;
         this.description=description;
-        this.architects=architects;
+        Set<Architect> a = new HashSet<>();
+        for (Architect x : architects)
+            a.add(x);
+        this.architects=a;
         this.from=from;
         this.to=to;
     }
     public Project(String name, LocalDate from, LocalDate to, String description,List<Architect> architects,Category category) {
         this.name=name;
         this.description=description;
-        this.architects=architects;
+        Set<Architect> a = new HashSet<>();
+        for (Architect x : architects)
+            a.add(x);
+        this.architects=a;
         this.from=from;
         this.to=to;
         this.category=category;
@@ -110,11 +111,17 @@ public class Project {
     }
 
     public List<Architect> getArchitects() {
-        return architects;
+        List<Architect> items = new ArrayList<>();
+        for (Architect e : architects)
+            items.add(e);
+        return items;
     }
 
     public void setArchitects(List<Architect> architects) {
-        this.architects = architects;
+        Set<Architect> p = new HashSet<>();
+        for (Architect x : architects)
+            p.add(x);
+        this.architects = p;
     }
 
     public Category getCategory() {
@@ -126,8 +133,10 @@ public class Project {
     }
 
     @PreRemove
-    public void preRemove() {
-
-        architects.remove(this);
+    private void removeGroupsFromUsers() {
+        for (Architect a : architects) {
+            a.getProjects().remove(this);
+        }
     }
+
 }
