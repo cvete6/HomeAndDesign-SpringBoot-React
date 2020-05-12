@@ -10,6 +10,7 @@ FRONTEND:
  За стартувањето на frontend следиве чекори: 
  -cd homeanddesin
  -npm install 
+ -npm install bootstrap
  -npm start
  
  BACKEND:
