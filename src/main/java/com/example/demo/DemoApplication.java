@@ -2,9 +2,11 @@ package com.example.demo;
 
 import com.example.demo.model.Architect;
 import com.example.demo.model.Category;
+import com.example.demo.model.News;
 import com.example.demo.model.Project;
 import com.example.demo.repository.jpa.ArchitectJpaRepository;
 import com.example.demo.repository.jpa.CategoryJpaRepository;
+import com.example.demo.repository.jpa.NewsJpaRepository;
 import com.example.demo.repository.jpa.ProjectJpaRepository;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +37,24 @@ public class DemoApplication {
     @Bean
     public CommandLineRunner demo(ArchitectJpaRepository repository) {
         return (args) -> {
-            // save a few customers
             repository.save(new Architect("Jack", "Bauer"));
             repository.save(new Architect("Chloe", "O'Brian"));
             repository.save(new Architect("Kim", "Bauer"));
             repository.save(new Architect("David", "Palmer"));
             repository.save(new Architect("Michelle", "Dessler"));
+
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demoNews(NewsJpaRepository repository) {
+        return (args) -> {
+            // save a few customers
+            repository.save(new News("Jack", "Bauer",1));
+            repository.save(new News("Chloe", "O'Brian",2));
+            repository.save(new News("Kim", "mija",3));
+            repository.save(new News("David", "Palmer",4));
+            repository.save(new News("Michelle", "Dessler",2));
 
         };
     }

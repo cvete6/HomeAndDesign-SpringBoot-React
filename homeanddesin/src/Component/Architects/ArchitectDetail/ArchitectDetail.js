@@ -36,7 +36,7 @@ const ArchitectDetail = (props)=> {
         projectsView=<span>none</span>
     }
     return (
-        <div className="container-sm justify-content-center">
+        <div className="container-sm justify-content-center w-75">
             <h4 className="text-upper text-left col-12">    </h4>
 
             <div className="row container-sm">

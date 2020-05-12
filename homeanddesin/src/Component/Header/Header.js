@@ -15,12 +15,12 @@ const Header = (props) => {
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                            <Link className="nav-brand" to={"/home"} >
-                                <div className="h-50 " >
-                                    <img  id="logo" src="logo1.jpg" alt="..." className="rounded-circle "></img>
-                                </div>
-                            </Link>
-                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <Link className="nav-brand" to={"/home"} >
+                            <div className="h-50 " >
+                                <img  id="logo" src="logo1.jpg" alt="..." className="rounded-circle "></img>
+                            </div>
+                        </Link>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 <li className="nav-item active">
                                     <Link className="nav-link" to={"/architects"}>ARCHITECTS</Link>

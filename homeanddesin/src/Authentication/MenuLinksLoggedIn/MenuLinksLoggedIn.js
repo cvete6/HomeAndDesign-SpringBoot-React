@@ -23,6 +23,9 @@ function MenuLinksLoggedIn(){
                 <li className="nav-item">
                     <Link className="nav-link" to={"/projects/calendar"}>CALENDAR</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to={"/aboutUs"}>ContactUs</Link>
+                </li>
                 <li>
                     <Link className="menu-text li-menu-padding" href="#" onClick={() => app.auth().signOut()}>SignOut</Link>
                 </li>

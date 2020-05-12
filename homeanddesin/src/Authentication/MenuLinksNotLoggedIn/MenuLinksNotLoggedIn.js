@@ -20,6 +20,9 @@ function MenuLinksNotLoggedIn(){
                 <li className="nav-item">
                     <Link className="nav-link" to={"/projects/calendar"}>CALENDAR</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to={"/aboutUs"}>ContactUs</Link>
+                </li>
                 <li>
                     <Link className="nav-link" to={"/login"}>Log In</Link>
                 </li>

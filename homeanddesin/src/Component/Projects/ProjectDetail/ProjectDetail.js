@@ -34,7 +34,7 @@ const ProjectDetail = (props)=> {
         projectsView=<span>none</span>
     }
     return (
-        <div >
+        <div className="  container-sm justify-content-center w-75">
             <h4 className="text-upper text-left col-12">   </h4>
 
             <div className="row container-sm">
@@ -44,7 +44,7 @@ const ProjectDetail = (props)=> {
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="form-group row container-sm">
                 <div className="offset-sm-1 col-12  text-center">
                     <button className="btn btn-secondary ">
                         <Link to={"/projects"}>Cencel</Link>

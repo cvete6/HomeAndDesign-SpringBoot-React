@@ -23,7 +23,6 @@ import Register from "./Authentication/Register/Register";
 import Menu from "./Authentication/Menu/Menu";
 import AboutUs from "./Component/AboutUs/aboutUs";
 
-
 class App extends Component {
     constructor(props) {
         super(props)
@@ -180,7 +179,7 @@ class App extends Component {
             <Router>
                 <Menu/>
 
-                <main role="main" id="mainheight" className="pt-xl-5"  >
+                <main role="main" id="mainheight" className="pt-xl-5 pb-lg-5"  >
                     <Route path={"/home"} className="mt-5 pt-xl-5">
                         <Home/>
                     </Route>
@@ -192,7 +191,7 @@ class App extends Component {
                         <Register/>
                     </Route>
 
-                    <div className="container pt-3"  id="main" >
+                    <div className="container pt-xl-5 mt-5 "  id="main" >
                         <Route path={"/architects"}  exact render={()=>
                             <Architects onPageClick={this.loadArchitects} terms={this.state.terms} onDelete={this.deleteArchitect} />}>
                         </Route>
@@ -224,6 +223,7 @@ class App extends Component {
                         <Route path={"/aboutUs"} >
                             <AboutUs/>
                         </Route>
+
                         <Redirect to={"/home"}/>
                     </div>
 
